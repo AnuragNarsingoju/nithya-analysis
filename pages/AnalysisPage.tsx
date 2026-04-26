@@ -136,7 +136,7 @@ export const AnalysisPage: React.FC = () => {
       // Call backend API - will use admin-configured default model
       const result = await uploadVideoForAnalysis(
         videoFile,
-        undefined,
+        "local",
         undefined,
         userEmail,
       );

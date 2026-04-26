@@ -4,7 +4,12 @@
  * Provides functions to interact with the backend API
  */
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:5005";
+const ML_API_URL =
+  import.meta.env.VITE_ML_API_URL ||
+  import.meta.env.VITE_BACKEND_URL ||
+  API_URL;
 
 // ============================================
 // VIDEO ANALYSIS
@@ -39,7 +44,7 @@ export const uploadVideoForAnalysis = async (
     formData.append("userEmail", userEmail);
   }
 
-  const response = await fetch(`${API_URL}/getanalysis`, {
+  const response = await fetch(`${ML_API_URL}/getanalysis`, {
     method: "POST",
     body: formData,
   });
